@@ -1,12 +1,28 @@
-const posts = (posts = [], action) => {
+const initialState = {
+    posts: [],
+    isLoaded: false
+}
+
+const posts = (state = initialState, action) => {
     switch (action.type) {
         case 'FETCH_ALL':
-            return action.payload
+            return {
+                posts: action.payload,
+                isLoaded: true
+            }
         case 'CREATE':
-            return [...posts, action.payload]
+            return {
+                ...state,
+                posts: [...posts, action.payload].reverse()
+            }
+        case 'SET_LOADED':
+            return {
+                ...state,
+                isLoaded: action.payload
+            }
         default:
             return {
-                posts
+                state
             }
     }
 }

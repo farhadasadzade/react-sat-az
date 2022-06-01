@@ -360,6 +360,22 @@ body {
   border-radius: 5px;
 }
 
+.new__post textarea {
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  border: 2px solid var(--secondary-bg);
+  padding: 5px 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+.new__post textarea:focus-visible {
+  outline: none;
+}
+
 .new__post input:focus {
   outline: none;
 }
@@ -370,7 +386,7 @@ body {
   font-size: 16px;
   border: 2px solid var(--secondary-bg);
   border-radius: 5px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .new__post select:focus-visible {
@@ -378,6 +394,7 @@ body {
 }
 
 .new__post button {
+  margin-top: 35px !important;
   display: flex;
   align-items: center;
   justify-content: center;
