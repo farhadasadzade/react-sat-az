@@ -10,7 +10,7 @@ const initialState = {
     secondName: '',
     email: '',
     password: '',
-    repeatPassword: ''
+    confirmPassword: ''
 }
 
 const Register = () => {
@@ -47,8 +47,8 @@ const Register = () => {
                 <label htmlFor="password">
                     Parol: <input type="password" name='password' onChange={handleChange}/>
                 </label>
-                <label htmlFor="repeatPassword">
-                    Parolu yenidən daxil edin: <input type="password" name='repeatPassword' onChange={handleChange}/>
+                <label htmlFor="confirmPassword">
+                    Parolu yenidən daxil edin: <input type="password" name='confirmPassword' onChange={handleChange}/>
                 </label>
                 <button type='submit'>Qeydiyyatdan keç</button>
             </form>

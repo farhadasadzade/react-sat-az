@@ -1,6 +1,7 @@
 const authReducer = (state = { authData: null }, action) => {
     switch (action.type) {
         case 'AUTH':
+            console.log('a')
             localStorage.setItem('profile', JSON.stringify({ ...action?.data }))
 
             return { ...state, authData: action?.data }
@@ -12,3 +13,5 @@ const authReducer = (state = { authData: null }, action) => {
             return state
     }
 }
+
+export default authReducer
