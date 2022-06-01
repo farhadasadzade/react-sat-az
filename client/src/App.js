@@ -12,6 +12,8 @@ import { Routes, Route } from 'react-router';
 import Header from './Components/Header';
 import NewPost from './Components/Pages/NewPost';
 import Home from './Components/Pages/Home';
+import Login from './Components/Pages/Login';
+import Register from './Components/Pages/Register';
 
 
 
@@ -29,6 +31,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/yeni-elan' element={<NewPost />} />
+        <Route path='/daxil-ol' element={<Login />} />
+        <Route path='/qeydiyyat' element={<Register />} />
       </Routes>
     </div>
   );

@@ -4,6 +4,7 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 
 import postRoutes from './routes/posts.js'
+import userRoutes from './routes/users.js'
 
 const app = express()
 
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors())
 
 app.use('/elanlar', postRoutes)
+app.use('/istifadeciler', userRoutes)
 
 const DB_URL = 'mongodb+srv://farhadasadzade:0e2Ys00cs7rI2Df8@react-sat-az.kvvxt.mongodb.net/?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000;

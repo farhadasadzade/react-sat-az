@@ -1,6 +1,10 @@
 import axios from 'axios'
 
-const url = 'http://localhost:5000/elanlar'
+const API = axios.create({ baseURL: 'http://localhost:5000' })
 
-export const fetchPosts = () => axios.get(url)
-export const createPost = (newPost) => axios.post(url, newPost)
+export const fetchPosts = () => API.get('/elanlar')
+export const createPost = (newPost) => API.post('/elanlar', newPost)
+
+
+export const signin = (data) => API.post('/istifadeciler/signin', data)
+export const signup = (data) => API.post('/istifadeciler/signup', data)
