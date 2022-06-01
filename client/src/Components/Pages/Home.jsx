@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { setLoaded } from '../../redux/actions/posts'
+import { getPosts } from '../../redux/actions/posts'
 
 import ContentLoader from "react-content-loader"
 
@@ -15,6 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(setLoaded(false))
+    dispatch(getPosts())
   }, [dispatch])
 
   const isLoaded = useSelector(({posts}) => posts.isLoaded)

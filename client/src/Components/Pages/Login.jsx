@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router'
 
 import { signin } from '../../redux/actions/auth'
 
@@ -11,6 +12,7 @@ const initialState = {
 const Login = () => {
 
     const disptach = useDispatch()
+    const navigate = useNavigate()
 
     const [loginData, setLoginData] = useState(initialState)
 
@@ -21,7 +23,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        disptach(signin(loginData))
+        disptach(signin(loginData, navigate))
     }
 
   return (

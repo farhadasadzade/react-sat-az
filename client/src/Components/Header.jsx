@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
+import { useLocation, useNavigate } from 'react-router'
 
 //Assets
 import noimg from '../images/noimg.png'
@@ -14,13 +15,28 @@ import { faMagnifyingGlass,faPlus, faArrowRightFromBracket } from '@fortawesome/
 
 const Header = () => {
 
+    const navigate =  useNavigate()
+    const location = useLocation()
     const dispatch = useDispatch()
 
-    const [user, setUser] = useState(false)
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
 
     const logout = () => {
-        setUser(false)
+
+        dispatch({type: 'LOGOUT'})
+
+        navigate('/')
+
+        setUser(null)
     }
+
+    useEffect(() => {
+        // eslint-disable-next-line
+        const token = user?.token
+
+        setUser(JSON.parse(localStorage.getItem('profile')))
+    },// eslint-disable-next-line 
+    [location])
 
   return (
     <header className="header">
@@ -40,7 +56,7 @@ const Header = () => {
             {user ?
                 <>
                     <Link to='/yeni-elan'><button><FontAwesomeIcon icon={faPlus}/> Yeni elan</button></Link>
-                    <h2>Maqa</h2>
+                    <h2>{user.result.firstName}</h2>
                     <div className="header__avatar">
                         <img src={noimg} alt="" />
                     </div>
