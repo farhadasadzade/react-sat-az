@@ -3,15 +3,12 @@ import {Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import { useLocation, useNavigate } from 'react-router'
 
-//Assets
-import noimg from '../images/noimg.png'
-
 //Redux actions
 import {getPosts, setLoaded} from '../redux/actions/posts'
 
 //FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass,faPlus, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass,faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
 
@@ -20,6 +17,7 @@ const Header = () => {
     const dispatch = useDispatch()
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+    const [logoutString, setLogoutString] = useState(user?.result.firstName)
 
     const logout = () => {
 
@@ -29,6 +27,10 @@ const Header = () => {
 
         setUser(null)
     }
+
+    useEffect(() => {
+        setLogoutString(user?.result.firstName)
+    }, [user])
 
     useEffect(() => {
         // eslint-disable-next-line
@@ -56,11 +58,9 @@ const Header = () => {
             {user ?
                 <>
                     <Link to='/yeni-elan'><button><FontAwesomeIcon icon={faPlus}/> Yeni elan</button></Link>
-                    <h2>{user.result.firstName}</h2>
-                    <div className="header__avatar">
-                        <img src={noimg} alt="" />
-                    </div>
-                    <button onClick={logout}><FontAwesomeIcon icon={faArrowRightFromBracket} /></button>
+                    <button onMouseEnter={() => setLogoutString('Çıxış')} 
+                            onMouseLeave={() => setLogoutString(user.result.firstName)} 
+                            onClick={logout}>{logoutString}</button>
                 </>
                 :
                 <>

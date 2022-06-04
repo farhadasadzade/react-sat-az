@@ -20,11 +20,10 @@ const Home = () => {
   }, [dispatch])
 
   const isLoaded = useSelector(({posts}) => posts.isLoaded)
-
-  const loadingBlocks = Array(12).fill(0)
-
   const posts = useSelector(({posts}) => posts.posts)
 
+  const loadingBlocks = Array(12).fill(0)
+  
   return (
     <div>
         <Categories />

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import {useDispatch} from 'react-redux'
 
 import FileBase from 'react-file-base64'
-import { createPost } from '../../redux/actions/posts'
+import { createPost } from '../../redux/actions/adminPostsItems'
 
 
 
@@ -11,10 +11,13 @@ const NewPost = () => {
 
     const dispatch = useDispatch()
 
-    const [postData, setPostData] = useState({creator: '', name: '', price: '', description: '', selectedFile: '', category: 'ev', phone: '', createdAt: new Date().toJSON()})
+    const [postData, setPostData] = useState({creatorId: '', creatorName: '', name: '', price: '', description: '', selectedFile: '', category: 'ev', phone: '', createdAt: new Date().toJSON()})
 
     const handleSubmit = (e) => {
-        dispatch(createPost(postData))
+        e.preventDefault()
+        const creatorId = JSON.parse(localStorage.getItem('profile'))
+
+        dispatch(createPost({...postData, creatorId: creatorId.result._id, creatorName: creatorId.result.firstName}))
     }
 
   return (

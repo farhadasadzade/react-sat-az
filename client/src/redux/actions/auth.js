@@ -13,7 +13,11 @@ export const signup = (formData) => async (dispatch) => {
 export const signin = (formData, navigate) => async (dispatch) => {
     try {
         const { data } = await api.signin(formData)
-        navigate('/')
+        if (data.result.email === 'f.esedzade9789@gmail.com') {
+            navigate('/admin-panel')
+        } else {
+            navigate('/')
+        }
 
         dispatch({ type: 'AUTH', data })
     } catch (error) {

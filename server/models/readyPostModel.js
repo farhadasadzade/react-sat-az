@@ -12,6 +12,6 @@ const postSchema = mongoose.Schema({
     createdAt: Date
 })
 
-const PostModel = mongoose.model('PostModel', postSchema)
+const ReadyPostModel = mongoose.model('ReadyPostModel', postSchema)
 
-export default PostModel
+export default ReadyPostModel
