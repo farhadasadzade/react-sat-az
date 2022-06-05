@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 
 import { signup } from '../../redux/actions/auth'
@@ -15,7 +14,6 @@ const initialState = {
 
 const Register = () => {
 
-    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const [registerData, setRegisterData] = useState(initialState)

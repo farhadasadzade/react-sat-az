@@ -3,7 +3,6 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 import {deletePost} from '../../redux/actions/posts'
-import { post } from '../../redux/actions/post'
 
 import {useNavigate} from 'react-router'
  

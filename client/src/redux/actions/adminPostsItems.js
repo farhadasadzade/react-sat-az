@@ -1,4 +1,5 @@
 import * as api from '../../api'
+import { setError } from '../actions/auth'
 
 export const fetchAdminPosts = () => async (dispatch) => {
     try {
@@ -12,7 +13,9 @@ export const fetchAdminPosts = () => async (dispatch) => {
 
 export const createPost = (post, success) => async (dispatch) => {
     try {
-        const { data } = await api.createPost(post)
+        const { data, status } = await api.createPost(post)
+
+        dispatch(setError(status))
 
         dispatch({ type: 'CREATE_POST', payload: data })
     } catch (error) {
