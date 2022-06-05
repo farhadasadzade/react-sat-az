@@ -1,4 +1,5 @@
 import * as api from '../../api'
+import { post } from './post'
 
 export const setLoaded = val => ({
     type: 'SET_LOADED',
@@ -34,5 +35,19 @@ export const sendPost = (post) => async (dispatch) => {
 
     } catch (error) {
         console.log(error.message)
+    }
+}
+
+export const deletePost = (id, navigate) => async (dispatch) => {
+    try {
+        await api.deleteUserPost(id)
+
+        navigate('/')
+
+        dispatch(post(null))
+
+        dispatch({ type: 'DELETE_USER_POST', payload: id })
+    } catch (error) {
+        console.log(error)
     }
 }

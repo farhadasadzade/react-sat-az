@@ -20,6 +20,10 @@ const posts = (state = initialState, action) => {
                 ...state,
                 posts: [action?.payload, ...state.posts]
             }
+        case 'DELETE_USER_POST':
+            return {
+                posts: state.posts.filter((post) => post._id !== action.payload)
+            }
         default:
             return {
                 ...state

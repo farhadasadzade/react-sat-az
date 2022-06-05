@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
 //Components
@@ -20,15 +20,14 @@ const menuItems = [{
 }, {
     name: 'Yoxlanılmamış elanlar',
     component: `<AdminPosts />`
-}, {
-    name: 'Bütün elanlar',
-    component: 'butun-elanlar'
 }]
 
 const AdminPanel = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    const items = useSelector(({adminPostsItems}) => adminPostsItems.items)
 
     const [active, setActive] = useState(0)
 
@@ -59,7 +58,7 @@ const AdminPanel = () => {
                     {menuItems.map((item, index) => {
                         return <li key={index} className={`admin__menu-item ${index === active && `admin__menu-active`}`}
                                 onClick={() => handleActive(index)}>
-                                {item.name}
+                                {item.name} {index === 1 && items > 0 && <span>{items}</span>}
                             </li>
                     })}
                 </ul>

@@ -21,6 +21,11 @@ export const signin = (formData, navigate) => async (dispatch) => {
 
         dispatch({ type: 'AUTH', data })
     } catch (error) {
-        console.log(error.message)
+        dispatch(setError(error))
     }
 }
+
+export const setError = (err) => ({
+    type: 'ERROR',
+    payload: err
+})

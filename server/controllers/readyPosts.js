@@ -1,5 +1,7 @@
 import ReadyPostModel from "../models/readyPostModel.js"
 
+import mongoose from "mongoose"
+
 export const getPosts = async (req, res) => {
     try {
         const posts = await ReadyPostModel.find()
@@ -22,4 +24,26 @@ export const createPost = async (req, res) => {
     } catch (error) {
         res.status(409).json({ message: error.message })
     }
+}
+
+export const getPost = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const post = await ReadyPostModel.findById(id);
+
+        res.status(200).json(post);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
+
+export const deletePost = async (req, res) => {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    await ReadyPostModel.findByIdAndRemove(id);
+
+    res.json({ message: "Post deleted successfully." });
 }

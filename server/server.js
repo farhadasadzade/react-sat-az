@@ -5,7 +5,7 @@ import mongoose from 'mongoose'
 
 import postRoutes from './routes/posts.js'
 import userRoutes from './routes/users.js'
-import readyUserRoutes from './routes/readyPosts.js'
+import readyPostRoutes from './routes/readyPosts.js'
 
 const app = express()
 
@@ -15,7 +15,7 @@ app.use(cors())
 
 app.use('/admin-elanlar', postRoutes)
 app.use('/istifadeciler', userRoutes)
-app.use('/elanlar', readyUserRoutes)
+app.use('/elanlar', readyPostRoutes)
 
 const DB_URL = 'mongodb+srv://farhadasadzade:0e2Ys00cs7rI2Df8@react-sat-az.kvvxt.mongodb.net/?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000;

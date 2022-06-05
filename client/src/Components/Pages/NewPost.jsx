@@ -20,6 +20,7 @@ const NewPost = () => {
         dispatch(createPost({...postData, creatorId: creatorId.result._id, creatorName: creatorId.result.firstName}))
     }
 
+
   return (
     <div className="main">
         <div className="new__post">
@@ -32,7 +33,7 @@ const NewPost = () => {
                     Qiymət: <input type="text" name="price"/>
                 </label>
                 <label htmlFor="desc">
-                    Haqqında: <textarea name="desc" rows="5" onChange={(e) => setPostData({...postData, description: `<pre>${e.target.value}</pre>`, createdAt: new Date().toJSON()})}></textarea>
+                    Haqqında: <textarea name="desc" rows="5" onChange={(e) => setPostData({...postData, description: `${e.target.value}`, createdAt: new Date().toJSON()})}></textarea>
                 </label>
                 <label htmlFor="img">
                     Şəkil: <FileBase type='file' multiple={false} onDone={ ({base64}) => setPostData({...postData, selectedFile: base64, createdAt: new Date().toJSON()})} />

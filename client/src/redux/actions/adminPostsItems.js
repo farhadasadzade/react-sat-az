@@ -10,7 +10,7 @@ export const fetchAdminPosts = () => async (dispatch) => {
     }
 }
 
-export const createPost = (post) => async (dispatch) => {
+export const createPost = (post, success) => async (dispatch) => {
     try {
         const { data } = await api.createPost(post)
 

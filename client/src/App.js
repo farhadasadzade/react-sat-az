@@ -15,6 +15,7 @@ import Home from './Components/Pages/Home';
 import Login from './Components/Pages/Login';
 import Register from './Components/Pages/Register';
 import AdminPanel from './Components/Pages/Admin/AdminPanel';
+import PostPage from './Components/Pages/PostPage';
 
 
 
@@ -45,6 +46,7 @@ function App() {
         <Route path='/daxil-ol' element={<Login />} />
         <Route path='/qeydiyyat' element={<Register />} />
         {user?.result.email === 'f.esedzade9789@gmail.com' && <Route path='/admin-panel' element={<AdminPanel />} />}
+        <Route path='/elan' element={<PostPage />} />
       </Routes>
     </div>
   );

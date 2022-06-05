@@ -7,6 +7,7 @@ export const createPost = (newPost) => API.post('/admin-elanlar', newPost)
 export const fetchAdminPosts = () => API.get('/admin-elanlar')
 export const sendPost = (newPost) => API.post('/elanlar', newPost)
 export const deletePost = (id) => API.delete(`/admin-elanlar/${id}`)
+export const deleteUserPost = (id) => API.delete(`/elanlar/${id}`)
 
 
 export const signin = (data) => API.post('/istifadeciler/signin', data)
