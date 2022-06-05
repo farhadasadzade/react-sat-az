@@ -17,6 +17,10 @@ app.use('/admin-elanlar', postRoutes)
 app.use('/istifadeciler', userRoutes)
 app.use('/elanlar', readyPostRoutes)
 
+app.get('/', (req, res) => {
+    res.send('AAA')
+})
+
 const DB_URL = 'mongodb+srv://farhadasadzade:0e2Ys00cs7rI2Df8@react-sat-az.kvvxt.mongodb.net/?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000;
 
